@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<head>
+	<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+	<title>Toronto Park Finder</title>
+	
+	<link rel="stylesheet" href="css/normalize.css" />
+	
+	<link rel="stylesheet" href="css/foundation.css" />
+	
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXqKi7pe3PzHqv1Jh93WS4qSDagyrpwCc&sensor=false"></script>
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	
+	<script type="text/javascript" src="js/script.js"></script>
+	
+	<script src="js/vendor/custom.modernizr.js"></script>
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	
+	<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+	
+	<script type="text/javascript" src="js/jquery.plusanchor.js"></script>
+	
+	<script type="text/javascript">
+	
+/***********************************************************************************
+home button click reload
+*************************************************************************************/		
+	function myFunction(){
+		location.reload();
+	}
+	
+/***********************************************************************************
+this function is a 'fake-click', which is triggered for scrollto
+*************************************************************************************/	
+	function fakeClick(event, anchorObj) {
+		if (anchorObj.click) {	
+			anchorObj.click()
+			} else if(document.createEvent) {
+				if(event.target !== anchorObj) {
+					var evt = document.createEvent("MouseEvents"); 
+					evt.initMouseEvent("click", true, true, window, 
+	  0, 0, 0, 0, 0, false, false, false, false, 0, null); 
+	  				var allowDefault = anchorObj.dispatchEvent(evt);
+	  				}
+	  			}
+	  		}
+/***********************************************************************************
+for scrollto ie anchorscroll
+*************************************************************************************/		
+	jQuery(document).ready(function($){
+		$('body').plusAnchor({
+			easing: 'easeInOutExpo',
+			offsetTop: -20,
+			speed: 1000,
+			onInit: function( base ) {
+
+				if ( base.initHash != '' && $(base.initHash).length > 0 ) {
+					window.location.hash = 'hash_' + base.initHash.substring(1);
+					window.scrollTo(0, 0);
+	
+					$(window).load( function() {
+	
+						timer = setTimeout(function() {
+							$(base.scrollEl).animate({
+								scrollTop: $( base.initHash ).offset().top
+							}, base.options.speed, base.options.easing);
+						}, 2000); // setTimeout
+	
+					}); // window.load
+				}; // if window.location.hash
+	
+			} // onInit
+		});
+	});	
+	</script>
+
+</head>
+<body id="top">
+
+<nav class="top-bar">
+  <ul class="title-area">
+    <!-- Title Area -->
+    <li class="name">
+      <h1><a href="#" onclick="myFunction()">Toronto Park Finder</a></h1>
+    </li>
+    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon" ><a href="#" ><span></span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Left Nav Section -->
+    
+    <ul class="left">
+      <li class="divider"></li>
+      <li class="active"><a href="#" data-reveal-id="myModal">How To</a></li>
+    </ul>
+
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="divider"></li>
+      <li onclick="dogButtonClick()" class="active"><a href="#">Dog Parks</a></li>
+      <li class="divider"></li>
+      <li onclick="playgroundButtonClick()" class="active"><a href="#">Playground Parks</a></li>
+      <li class="divider"></li>
+      <li onclick="poolButtonClick()" class="active"><a href="#">Pool Parks</a></li>
+      <li class="divider"></li>
+      <li onclick="rinkButtonClick()" class="active"><a href="#">Rink Parks</a></li>
+      <li class="divider"></li>
+      <li onclick="fireButtonClick()" class="active"><a href="#">Fire-Pit Parks</a></li>
+      <li class="divider"></li>
+    </ul>
+  </section>
+</nav>
+	
+	<div id="map-canvas"></div>
+
+	<div id="nearbyRowWrapper">
+		<div id="nearbyParksRow" class="row"><!-- row2 -->		
+			<div class="large-12 columns">
+			<div id="nearbyParksHeader">Nearby Parks</div>
+				<!-- Grid Example -->
+					<!-- <h4>Nearby Parks</h4> -->
+						<div id="nearbyContainerBig">
+							<div id="nearbyContainer">
+								<ul id="u1"></ul>
+							</div>
+						</div> <!-- nearbyBig end -->
+			</div> <!-- large 12 end -->
+		</div> <!-- row 2 end -->
+	</div> <!-- nearyRowWrapperEnd -->
+	
+	
+	<div class="row"> <!-- row 3 -->	
+		<div id="anchor" data-options="tipLocation:top;tipAnimation:fade"></div>
+	</div> <!-- end row3 -->
+
+	<a href="#top" id="back-to-top"><h4>Back To Top</h4></a>
+		<a href="#anchor" id="link">Block 1</a></li>
+
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+  '.js><\/script>')
+  </script>
+  
+  <script src="js/foundation.min.js"></script>
+  <!--
+  
+  <script src="js/foundation/foundation.js"></script>
+  
+  <script src="js/foundation/foundation.alerts.js"></script>
+  
+  <script src="js/foundation/foundation.clearing.js"></script>
+  
+  <script src="js/foundation/foundation.cookie.js"></script>
+  
+  <script src="js/foundation/foundation.dropdown.js"></script>
+  
+  <script src="js/foundation/foundation.forms.js"></script>
+  
+  <script src="js/foundation/foundation.joyride.js"></script>
+  
+  <script src="js/foundation/foundation.magellan.js"></script>
+  
+  <script src="js/foundation/foundation.orbit.js"></script>
+  
+  <script src="js/foundation/foundation.placeholder.js"></script>
+  
+  <script src="js/foundation/foundation.reveal.js"></script>
+  
+  <script src="js/foundation/foundation.section.js"></script>
+  
+  <script src="js/foundation/foundation.tooltips.js"></script>
+  
+  <script src="js/foundation/foundation.topbar.js"></script>
+  
+  -->
+  
+  <script>
+    $(document).foundation();
+  </script>
+  
+  <div id="myModal" class="reveal-modal">
+  <h2>Welcome to Toronto Park Finder!</h2>
+  <p class="lead">Let me help you find a great park or community centre near you!</p>
+  <p>On the top menu, you can filter the parks you want to visit by type. Currently available are dog zones, playground, pools, rinks and fire-pits. The section right underneath the map will show you the closest parks. Click on the map markers to find the best parks near you and then click on the link name to reveal Instagram pics of the park (or a cat rejecting you). If you like what you see, click the directions link and you will be given step by step instructions to get to the park!</p>
+  <p><a href="#" class="large button" onclick="$('#myModal').foundation('reveal', 'close');">Get Started!</a></p>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+</body>
+</html>
